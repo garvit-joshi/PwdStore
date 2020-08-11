@@ -1,0 +1,5 @@
+*.txt
+*.aes
+build
+dist
+PwdStore.egg-info

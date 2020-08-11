@@ -28,6 +28,7 @@ def fileEncrypt(password,n):
     os.remove("Data.txt")
 def fileDecrypt(password):
     count=0
+    en=1
     bufferSize = 64 * 1024
     try:
         pyAesCrypt.decryptFile("Data.txt.aes", "Data.txt", password, bufferSize)
@@ -38,13 +39,14 @@ def fileDecrypt(password):
     Lines = dFile.readlines()
     for line in Lines:
         if(count%3==0):
-            print("Entry ",(count%3)+1,":\n")
+            print("Entry ",en,":\n")
             print("Site:",line)
         elif(count%3==1):
             print("Username/Email:",line)
         else:
             print("Password:",line,)
         count=count+1
+        en=en+1
     dFile.close()
     try:
         os.remove("Data.txt")
