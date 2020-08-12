@@ -40,11 +40,11 @@ def fileDecrypt(password):
     for line in Lines:
         if(count%3==0):
             print("Entry ",en,":\n")
-            print("Site:",line)
+            print("Site:",line),
         elif(count%3==1):
-            print("Username/Email:",line)
+            print("Username/Email:",line),
         else:
-            print("Password:",line,)
+            print("Password:",line)
         count=count+1
         en=en+1
     dFile.close()
