@@ -17,13 +17,14 @@ def fileEncrypt(password,n):
             dFile.write("\n")
         dFile.close()
     except:
-        print("Error:1")
+        print("Error: Data Cannot be Written into File")
         dFile.close()
         return -1
     try:
         pyAesCrypt.encryptFile("Data.txt","Data.txt.aes", password, bufferSize)
     except:
-        print("Error:2")
+        print("Error: Data cannot be protected using Encryption")
+        os.remove("Data.txt")
         return -1
     os.remove("Data.txt")
 def fileDecrypt(password):
@@ -33,24 +34,26 @@ def fileDecrypt(password):
     try:
         pyAesCrypt.decryptFile("Data.txt.aes", "Data.txt", password, bufferSize)
     except:
-        print("Error:3\nPassword may be wrong")
+        print("Error:3\nPassword may be wrong or file is not present at desired loction")
         return -1
     dFile = open("Data.txt",'r')
     Lines = dFile.readlines()
+    n=len(Lines)
+    n=int(n/3)
     for line in Lines:
-    	line = line[:-1]
+        line=line[:-1]
         if(count%3==0):
-            print("Entry ",en,":\n")
-            print("Site:",line),
+            print("Entry",en,"of",n,":")
+            print("Site:",line)
+            en=en+1
         elif(count%3==1):
-            print("Username/Email:",line),
+            print("Username/Email:",line)
         else:
             print("Password:",line)
+            print("\n\n")
         count=count+1
-        en=en+1
     dFile.close()
     try:
         os.remove("Data.txt")
     except:
         return 0
-    

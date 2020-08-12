@@ -1,6 +1,6 @@
 # PwdStore
 
-PwdStoreis a Python 3 file-encryption module and script that uses AES256-CBC to encrypt/decrypt files and binary streams.
+PwdStoreis a Python 3 file-encryption module and script that uses AES256-CBC to encrypt/decrypt files.
 
 PwdStore is compatible with the AES Crypt file format (version 2).
 
