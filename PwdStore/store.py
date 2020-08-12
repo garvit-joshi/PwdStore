@@ -38,6 +38,7 @@ def fileDecrypt(password):
     dFile = open("Data.txt",'r')
     Lines = dFile.readlines()
     for line in Lines:
+    	line = line[:-1]
         if(count%3==0):
             print("Entry ",en,":\n")
             print("Site:",line),
