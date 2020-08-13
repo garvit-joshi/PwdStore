@@ -3,11 +3,9 @@ import os
 def fileNameChange(fileName,Operation):
     if(Operation==1):
         return fileName[:-4]
-    elif(Operation==2):
-        return fileName+".aes"
-def fileEncrypt(password,n,fileName="Data.txt"):
+def fileEncrypt(password,n,fileNameAES="Data.txt.aes"):
     bufferSize = 64 * 1024
-    fileNameAES=fileNameChange(fileName,2)
+    fileName=fileNameChange(fileNameAES,1)
     try:
         dFile = open(fileName,'w')
         for i in range(0,n):

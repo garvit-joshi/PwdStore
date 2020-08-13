@@ -12,9 +12,11 @@ IMPORTANT SECURITY NOTE: version 2 of the AES Crypt file format does not authent
 
 NOTE: there is no low-level memory management in Python, hence it is not possible to wipe memory areas were sensitive information was stored.
 
-### Module usage example:
+## Module usage example:
 
-#### Encrypt Data:
+### Encrypt Data:
+
+#### If you want to store data in Data.txt.aes
 ```
 import PwdStore
 n=int(input("Enter the No. of Credentials you want to Save:"))
@@ -22,13 +24,34 @@ mPassword=input("Enter A Password You want to create for the file:")
 PwdStore.fileEncrypt(mPassword,n)
 ```
 
-#### Decrypt Data:
+#### If you want to store data in your own file:
+Add a third Argument in  ```PwdStore.fileEncrypt()``` with the name of file you want to stre data in:
+```
+import PwdStore
+n=int(input("Enter the No. of Credentials you want to Save:"))
+mPassword=input("Enter A Password You want to create for the file:")
+PwdStore.fileEncrypt(mPassword,n,"Hello.txt.aes")
+```
+**Please Enter Suffix ```.txt.aes``` at the end of file**
+
+### Decrypt Data:
+
+#### if you want to retrieve data from Data.txt.aes
 ```
 import PwdStore
 mPassword=input("Please Enter Your master Password:")
 PwdStore.fileDecrypt(mPassword)
 ```
 
+#### If you want to retrieve data from your own file
+```
+import PwdStore
+mPassword=input("Please Enter Your master Password:")
+PwdStore.fileDecrypt(mPassword,"Hello.txt.aes")
+```
+
+**Please Enter Suffix ```.txt.aes``` at the end of file**
+
 #### Notes:
 1. Buffer Size=64 * 1024
-2. Data will be written in ```Data.txt.aes```, may change name of file in later builds.
+2. Data will be written in ```Data.txt.aes``` by default, may change name of file in later builds.
