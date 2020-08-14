@@ -1,8 +1,13 @@
 import pyAesCrypt
 import os
+
 def fileNameChange(fileName,Operation):
     if(Operation==1):
         return fileName[:-4]
+
+
+
+
 def fileEncrypt(password,n,fileNameAES="Data.txt.aes"):
     bufferSize = 64 * 1024
     fileName=fileNameChange(fileNameAES,1)
@@ -33,6 +38,10 @@ def fileEncrypt(password,n,fileNameAES="Data.txt.aes"):
         os.remove(fileName)
         return -1
     os.remove(fileName)
+
+
+
+
 def fileDecrypt(password,fileNameAES="Data.txt.aes"):
     count=0
     en=1
