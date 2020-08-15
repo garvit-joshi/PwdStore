@@ -39,7 +39,8 @@ def fileEncrypt(password,n,fileNameAES="Data.txt.aes"):
         return -1
     os.remove(fileName)
 
-
+def addCredentials(n):
+    
 
 
 def fileDecrypt(password,fileNameAES="Data.txt.aes"):
