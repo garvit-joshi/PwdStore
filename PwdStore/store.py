@@ -39,7 +39,52 @@ def fileEncrypt(password,n,fileNameAES="Data.txt.aes"):
         return -1
     os.remove(fileName)
 
+def addCredentials(password,n,fileNameAES="Data.txt.aes"):
+    bufferSize = 64 * 1024
+    if(n<=0):
+        print("No Record can be added.")
+        return -1
+    if(os.path.isfile(fileNameAES)==False):
+        print("Error:",fileNameAES,"Not Present.")
+        return -1
+    fileName=fileNameChange(fileNameAES,1)
+    try:
+        pyAesCrypt.decryptFile(fileNameAES, fileName, password, bufferSize)
+    except:
+        print("Error: Password may be wrong.")
+        return -1
+    try:
+        dFile = open(fileName,'a')
+        for i in range(0,n):
+            print("\n\nEntry",i+1," of ",n,":\n")
+            site=input("Enter the Name of site:")
+            username=input("Enter your Username/Email:")
+            passw=input("Enter your Password:")
+            dFile.write(site)
+            dFile.write("\n")
+            dFile.write(username)
+            dFile.write("\n")
+            dFile.write(passw)
+            dFile.write("\n")
+        dFile.close()
+        print("Data has been successfully Upgraded")
+    except:
+        dFile.close()
+        print("Error: Data Cannot be Written into File.")
+        if(os.path.isfile(fileName)==True):
+            os.remove(fileName)
+        return -1
+    try:
+        pyAesCrypt.encryptFile(fileName,fileNameAES, password, bufferSize)
+    except:
+        print("Error: Data cannot be protected using Encryption.")
+        os.remove(fileName)
+        return -1
+    os.remove(fileName)
+    
+    
 
+    
 
 
 def fileDecrypt(password,fileNameAES="Data.txt.aes"):
