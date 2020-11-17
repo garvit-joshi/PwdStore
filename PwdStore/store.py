@@ -11,8 +11,8 @@ def fileNameChange(fileName,Operation):
 def fileEncrypt(password,n,fileNameAES="Data.txt.aes"):
     bufferSize = 64 * 1024
     fileName=fileNameChange(fileNameAES,1)
+    dFile = open(fileName,'w')
     try:
-        dFile = open(fileName,'w')
         for i in range(0,n):
             print("\n\nEntry",i+1," of ",n,":\n")
             site=input("Enter the Name of site:")
@@ -53,8 +53,8 @@ def addCredentials(password,n,fileNameAES="Data.txt.aes"):
     except:
         print("Error: Password may be wrong.")
         return -1
+    dFile = open(fileName,'a')
     try:
-        dFile = open(fileName,'a')
         for i in range(0,n):
             print("\n\nEntry",i+1," of ",n,":\n")
             site=input("Enter the Name of site:")
@@ -100,10 +100,7 @@ def fileDecrypt(password,fileNameAES="Data.txt.aes"):
     except:
         print("Error: Password may be wrong.")
         return -1
-    try:
-        dFile = open(fileName,'r')
-    except:
-        print("Error: Unable to open file:",fileName)
+    dFile = open(fileName,'r')
     Lines = dFile.readlines()
     n=len(Lines)
     n=int(n/3)

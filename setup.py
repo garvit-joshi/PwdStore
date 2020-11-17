@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="PwdStore",
-    version="v0.1.6",
+    version="v0.20.11",
     author="Garvit Joshi",
     author_email="garvitjoshi9@gmail.com",
     description="A Package to store your Usernames, Password of a site in an encrypted file.",
